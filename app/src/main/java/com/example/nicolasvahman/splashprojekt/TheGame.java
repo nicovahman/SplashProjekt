@@ -38,12 +38,9 @@ public class TheGame extends AppCompatActivity {
     private ImageView næste;
     private TextView spillerscore;
     private int scoreCounter;
-    private int newScoreCounter;
-    private int amountOfLetters;
-    private int synligtord;
-    private int imageviewCounter;
+
     private int antalbogstaver;
-    private TextView antalbogstaverTV;
+
 
 
     ArrayList<String> muligeOrd = new ArrayList<String>();
@@ -65,7 +62,7 @@ public class TheGame extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        antalbogstaverTV = (TextView) findViewById(R.id.antalbogstaverTextview);
+
         gættefelt = (EditText) findViewById(R.id.gættesboks1);
 
         billeder = (ImageView) findViewById(R.id.imageView);
@@ -130,11 +127,12 @@ public class TheGame extends AppCompatActivity {
                 opdaterSkærm();
 
 
-                if (antalForkerteBogstaver > 6 && logik.erSpilletTabt()) {
+                if (logik.erSpilletTabt()) {
                     //info.setText("Du tabte spillet! Du havde 6 forkerte");
                     //forkert.setText("Du havde følgende forkerte bogstaver" + logik.getForkertebogstaver());
-                    gættefelt.setVisibility(View.INVISIBLE);
-                    tabtSpilDialog();
+                    //gættefelt.setVisibility(View.INVISIBLE);
+                    //tabtSpilDialog();
+
 
                 }
                 if (logik.erSidsteBogstavKorrekt()) {
@@ -142,8 +140,8 @@ public class TheGame extends AppCompatActivity {
                 }
 
                 if (logik.erSpilletVundet()) {
-                    //info.setText("Du har gættet korrekt og har vundet!");
-                    // forkert.setText("Du havde følgende forkerte bogstaver" + logik.getForkertebogstaver());
+                    info.setText("Du har gættet korrekt og har vundet!");
+                    forkert.setText("Du havde følgende forkerte bogstaver" + logik.getForkertebogstaver());
                     gættefelt.setVisibility(View.INVISIBLE);
                     billeder.setVisibility(View.INVISIBLE);
 
@@ -158,24 +156,71 @@ public class TheGame extends AppCompatActivity {
 
 
     }
+    private void opdaterSkærm() {
+
+        info.setText("Gæt ordet: " + logik.getSynligtOrd());
+        //info.append("\n\nDu har " + logik.getAntalForkerteBogstaver() + " forkerte:" + logik.getBrugteBogstaver());
+        forkert.setText("Du har gættet på:\n " + logik.getForkertebogstaver().toString() + "\n" + "Antal forkerte:\n" + logik.getAntalForkerteBogstaver());
+        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 1) {
+            billeder.setBackgroundResource(R.drawable.forkert1);
+
+        }
+        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 2) {
+            billeder.setBackgroundResource(R.drawable.forkert2);
+        }
+        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 3) {
+            billeder.setBackgroundResource(R.drawable.forkert3);
+        }
+        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 4) {
+            billeder.setBackgroundResource(R.drawable.forkert4);
+        }
+        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 5) {
+            billeder.setBackgroundResource(R.drawable.forkert5);
+        }
+        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 6) {
+            billeder.setBackgroundResource(R.drawable.forkert6);
+        }
+
+        if (logik.erSpilletSlut()) {
+            forkert.setText("");
+            if (logik.erSpilletVundet()) {
+                gemHighScore();
+                vundetSpilDialog().show();
+
+                //buildTextView();
+
+            }
+            if (logik.erSpilletTabt()) {
+                //info.setText("Du har tabt, ordet var : " + logik.getOrdet());
+                billeder.setVisibility(View.INVISIBLE);
+                forkert.setVisibility(View.INVISIBLE);
+                info.setVisibility(View.INVISIBLE);
+                tabtSpilDialog().show();
+            }
 
 
-    private void tabtSpilDialog() {
-        final AlertDialog dlgAlert = new AlertDialog.Builder(this).create();
-        dlgAlert.setMessage("Du har tabt spillet. Order var: : " + logik.getOrdet());
-        dlgAlert.setTitle("Tabt spil");
-        dlgAlert.show();
+        }
+
+    }
+
+
+    private AlertDialog.Builder tabtSpilDialog() {
+        final AlertDialog.Builder dlgAlertTaber = new AlertDialog.Builder(this);
+        dlgAlertTaber.setMessage("Du har brugt følgende antal forsøg: " + logik.getAntalForkerteBogstaver() + "Du skulle have gættet ordet: " + logik.getOrdet());
+        dlgAlertTaber.setTitle("Du tabte");
+        ((AlertDialog.Builder) dlgAlertTaber).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                opdaterSkærm();
+            }
+        });
+
+        dlgAlertTaber.create();
 
         logik.nulstil();
+        return dlgAlertTaber;
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                opdaterSkærm();
-                dlgAlert.dismiss();
-            }
-        }, 5000);
     }
 
     private AlertDialog.Builder vundetSpilDialog() {
@@ -252,14 +297,7 @@ public class TheGame extends AppCompatActivity {
 
     }
 
-    private void buildTextView() {
 
-        antalbogstaver = logik.getSynligtOrd().length();
-        antalbogstaverTV.setText("Ordet du skal gætte består af: " + antalbogstaver + "ord");
-
-        info.setText("Du skal gætte ordet: " + logik.getSynligtOrd());
-
-    }
 
     private void gemHighScore() {
         antalbogstaver = 6 - logik.getAntalForkerteBogstaver();
@@ -293,50 +331,7 @@ public class TheGame extends AppCompatActivity {
 
     }
 
-    private void opdaterSkærm() {
 
-        info.setText("Gæt ordet: " + logik.getSynligtOrd());
-        //info.append("\n\nDu har " + logik.getAntalForkerteBogstaver() + " forkerte:" + logik.getBrugteBogstaver());
-        forkert.setText("Du har gættet på:\n " + logik.getForkertebogstaver().toString() + "\n" + "Antal forkerte:\n" + logik.getAntalForkerteBogstaver());
-        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 1) {
-            billeder.setBackgroundResource(R.drawable.forkert1);
-
-        }
-        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 2) {
-            billeder.setBackgroundResource(R.drawable.forkert2);
-        }
-        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 3) {
-            billeder.setBackgroundResource(R.drawable.forkert3);
-        }
-        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 4) {
-            billeder.setBackgroundResource(R.drawable.forkert4);
-        }
-        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 5) {
-            billeder.setBackgroundResource(R.drawable.forkert5);
-        }
-        if (!logik.erSidsteBogstavKorrekt() && logik.getAntalForkerteBogstaver() == 6) {
-            billeder.setBackgroundResource(R.drawable.forkert6);
-        }
-
-        if (logik.erSpilletSlut()) {
-            forkert.setText("");
-            if (logik.erSpilletVundet()) {
-                gemHighScore();
-                vundetSpilDialog().show();
-
-                //buildTextView();
-
-
-            }
-            if (logik.erSpilletTabt()) {
-                // info.setText("Du har tabt, ordet var : " + logik.getOrdet());
-                tabtSpilDialog();
-            }
-
-
-        }
-
-    }
 
 }
 
