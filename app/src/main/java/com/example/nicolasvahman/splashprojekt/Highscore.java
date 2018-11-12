@@ -44,6 +44,8 @@ public class Highscore extends AppCompatActivity {
         setContentView(R.layout.activity_highscore);
         //setTitle("Highscore liste");
 
+        getSupportActionBar().hide();
+
 
         listView = (ListView) findViewById(R.id.hsl);
 
