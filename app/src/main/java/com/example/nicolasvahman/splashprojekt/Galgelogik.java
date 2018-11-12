@@ -15,6 +15,8 @@ public class Galgelogik {
 
     private ArrayList<String> forkertebogstaver = new ArrayList<String>();
     private String ordet;
+    private String ordetFraDR;
+    private String synligtOrdFraDR;
     private ArrayList<String> brugteBogstaver = new ArrayList<String>();
     private String synligtOrd;
     private int antalForkerteBogstaver;
@@ -33,6 +35,14 @@ public class Galgelogik {
 
     public String getOrdet() {
         return ordet;
+    }
+
+    public String getSynligtOrdFraDR() {
+        return synligtOrdFraDR;
+    }
+
+    public String getOrdetFraDR(){
+        return ordetFraDR;
     }
 
     public int getAntalForkerteBogstaver() {
@@ -57,18 +67,7 @@ public class Galgelogik {
 
 
     public Galgelogik() {
-        muligeOrd.add("bil");
-        muligeOrd.add("computer");
-        muligeOrd.add("programmering");
-        muligeOrd.add("motorvej");
-        muligeOrd.add("busrute");
-        muligeOrd.add("gangsti");
-        muligeOrd.add("skovsnegl");
-        muligeOrd.add("solsort");
-        muligeOrd.add("seksten");
-        muligeOrd.add("sytten");
-        muligeOrd.add("atten");
-        nulstil();
+
     }
 
 

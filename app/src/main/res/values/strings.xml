@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Hangman - 2018</string>
     <string name="spil">Spil</string>
+
+    <string-array name="muligheder">
+        <item>Ord fra DR</item>
+        <item>Random Ord</item>
+    </string-array>
+
 </resources>
 

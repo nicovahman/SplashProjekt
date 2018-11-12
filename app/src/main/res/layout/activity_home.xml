@@ -11,28 +11,28 @@
         android:id="@+id/gifImageView"
         android:layout_width="273dp"
         android:layout_height="338dp"
-        android:layout_centerInParent="true"
+        android:layout_alignTop="@+id/emneTilmailen"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_marginTop="-93dp"
+        android:layout_marginEnd="-5dp"
         android:src="@drawable/hangmangif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.618"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/spilspillet"
-        android:layout_width="92dp"
+    <Spinner
+        android:id="@+id/spin"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/gifImageView"
-        android:layout_marginBottom="22dp"
-        android:fontFamily="casual"
-        android:text="Spil"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gifImageView"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="247dp" />
+        android:layout_marginStart="97dp"
+        android:layout_marginEnd="-4dp"
+        android:layout_marginBottom="116dp"
+        android:layout_toStartOf="@+id/anbefal"
+        android:entries="@array/muligheder"></Spinner>
 
     <TextView
         android:id="@+id/textView"
@@ -67,20 +67,21 @@
     <Button
         android:id="@+id/anbefal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/gifImageView"
-        android:layout_alignTop="@+id/spilspillet"
-        android:fontFamily="casual"
-        android:text="Anbefal "
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:layout_height="41dp"
+        android:layout_below="@+id/gifImageView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="-117dp"
+        android:text="Anbefal " />
 
     <EditText
         android:id="@+id/emailadresse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/gifImageView"
-        android:layout_marginBottom="98dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="69dp"
+        android:layout_marginBottom="371dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:visibility="invisible" />
@@ -89,10 +90,10 @@
         android:id="@+id/emneTilmailen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="104dp"
-        android:layout_marginStart="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="131dp"
+        android:layout_marginBottom="373dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Prøv Hangman - 2018 Free Version!"
@@ -102,11 +103,44 @@
         android:id="@+id/emailBesked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/emneTilmailen"
         android:layout_alignStart="@+id/emneTilmailen"
+        android:layout_alignBottom="@+id/emneTilmailen"
+        android:layout_marginStart="66dp"
+        android:layout_marginBottom="267dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Jeg har lige prøvet det her spil, Hangman - 2018 Free Version. Jeg anbefaler dig, at prøve det!"
         android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/nextpage"
+        android:layout_width="41dp"
+        android:layout_height="32dp"
+        android:layout_alignTop="@+id/spin"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="80dp"
+        app:srcCompat="@drawable/next" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spin"
+        android:layout_alignStart="@+id/spin"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="11dp"
+        android:text="Vælg Kategori"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/background_dark" />
+
+    <Button
+        android:id="@+id/highscorepage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/anbefal"
+        android:layout_marginEnd="-69dp"
+        android:layout_toStartOf="@+id/emailadresse"
+        android:text="Highscore" />
 
 </RelativeLayout>
