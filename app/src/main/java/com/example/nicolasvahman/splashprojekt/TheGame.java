@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,9 +34,9 @@ public class TheGame extends AppCompatActivity {
     private EditText gættefelt;
     private TextView forkert;
     private ImageView billeder;
-    private ImageView tilbageknap;
-    private ImageView restart;
-    private ImageView næste;
+
+    private Button guess;
+
     private TextView spillerscore;
     private int scoreCounter;
 
@@ -61,15 +62,13 @@ public class TheGame extends AppCompatActivity {
         setContentView(R.layout.activity_the_game);
         getSupportActionBar().hide();
 
-
+        guess = (Button) findViewById(R.id.guessbutton);
 
         gættefelt = (EditText) findViewById(R.id.gættesboks1);
 
         billeder = (ImageView) findViewById(R.id.imageView);
         billeder.setBackgroundResource(R.drawable.galgebasic);
-        tilbageknap = (ImageView) findViewById(R.id.tilbage);
-        restart = (ImageView) findViewById(R.id.restartknap);
-        næste = (ImageView) findViewById(R.id.imageView5);
+
         spillerscore = (TextView) findViewById(R.id.score);
 
         info = (TextView) findViewById(R.id.infotekst);
@@ -78,18 +77,13 @@ public class TheGame extends AppCompatActivity {
 
         forkert = (TextView) findViewById(R.id.forkertebogstaver);
 
-        tilbageknap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tilbagetilForsiden();
-            }
-        });
+
 
         gættefelt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String bogstav = gættefelt.getText().toString();
-                if (bogstav.length() != 1 || næste.isPressed()) {
+                if (bogstav.length() != 1 || guess.isPressed()) {
                     gættefelt.setError("Der kan kun gættes et bogstav ad gangen");
                     gættefelt.animate().rotationBy(3 * 360).setInterpolator(new DecelerateInterpolator());
                     return;
@@ -101,7 +95,7 @@ public class TheGame extends AppCompatActivity {
         info.setText("Henter ord fra Danmarks Radio");
         new MyAsyncTask(this).execute();
 
-        næste.setOnClickListener(new View.OnClickListener() {
+        guess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -140,8 +134,7 @@ public class TheGame extends AppCompatActivity {
                 }
 
                 if (logik.erSpilletVundet()) {
-                    info.setText("Du har gættet korrekt og har vundet!");
-                    forkert.setText("Du havde følgende forkerte bogstaver" + logik.getForkertebogstaver());
+
                     gættefelt.setVisibility(View.INVISIBLE);
                     billeder.setVisibility(View.INVISIBLE);
 
@@ -185,17 +178,13 @@ public class TheGame extends AppCompatActivity {
             forkert.setText("");
             if (logik.erSpilletVundet()) {
                 gemHighScore();
-                vundetSpilDialog().show();
 
-                //buildTextView();
+                vinderScreen();
 
             }
             if (logik.erSpilletTabt()) {
-                //info.setText("Du har tabt, ordet var : " + logik.getOrdet());
-                billeder.setVisibility(View.INVISIBLE);
-                forkert.setVisibility(View.INVISIBLE);
-                info.setVisibility(View.INVISIBLE);
-                tabtSpilDialog().show();
+
+               taberScreen();
             }
 
 
@@ -204,7 +193,7 @@ public class TheGame extends AppCompatActivity {
     }
 
 
-    private AlertDialog.Builder tabtSpilDialog() {
+    /*private AlertDialog.Builder tabtSpilDialog() {
         final AlertDialog.Builder dlgAlertTaber = new AlertDialog.Builder(this);
         dlgAlertTaber.setMessage("Du har brugt følgende antal forsøg: " + logik.getAntalForkerteBogstaver() + "Du skulle have gættet ordet: " + logik.getOrdet());
         dlgAlertTaber.setTitle("Du tabte");
@@ -221,9 +210,9 @@ public class TheGame extends AppCompatActivity {
         logik.nulstil();
         return dlgAlertTaber;
 
-    }
+    }*/
 
-    private AlertDialog.Builder vundetSpilDialog() {
+    /*private AlertDialog.Builder vundetSpilDialog() {
         final AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
         dlgAlert.setMessage("Du har brugt følgende antal forsøg: " + logik.getAntalForkerteBogstaver());
         dlgAlert.setTitle("Vundet spil");
@@ -239,7 +228,7 @@ public class TheGame extends AppCompatActivity {
         logik.nulstil();
         return dlgAlert;
 
-    }
+    }*/
 
 
     public void tilbagetilForsiden() {
@@ -279,7 +268,7 @@ public class TheGame extends AppCompatActivity {
         }
     }
 
-    private void gemDialog() {
+    public void gemDialog() {
         final AlertDialog dlgAlert = new AlertDialog.Builder(this).create();
         dlgAlert.setMessage("Highscoren er nu blevet gemt");
         dlgAlert.setTitle("");
@@ -299,7 +288,7 @@ public class TheGame extends AppCompatActivity {
 
 
 
-    private void gemHighScore() {
+    public void gemHighScore() {
         antalbogstaver = 6 - logik.getAntalForkerteBogstaver();
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -325,12 +314,35 @@ public class TheGame extends AppCompatActivity {
         editor.putInt("prefCount", ++scoreCounter);
         editor.apply();
 
-        gemDialog();
+
 
 
 
     }
 
+    public void vinderScreen(){
+
+        String vinderInfo = "Du vandt spillet! Tillykke med det! Du har brugt følgende antal forsøg: " + logik.getAntalForkerteBogstaver() + " Din score er nu gemt. Se den under highscore.";
+        Intent gåTilVinderSkærm = new Intent(TheGame.this, vinderscreen.class);
+
+
+        gåTilVinderSkærm.putExtra("vinderKey",vinderInfo);
+        startActivity(gåTilVinderSkærm);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
+    }
+
+
+    public void taberScreen(){
+
+        String taberInfo = "Du har tabt spillet. " + " Du har brugt følgende antal forsøg: " + logik.getAntalForkerteBogstaver() + " Du skulle have gættet ordet: " + logik.getOrdet()  ;
+        Intent gåTilTaberSkærm = new Intent(TheGame.this, taberscreen.class);
+
+
+        gåTilTaberSkærm.putExtra("key",taberInfo);
+        startActivity(gåTilTaberSkærm);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+    }
 
 
 }

@@ -22,7 +22,9 @@
         <activity android:name=".TheGame" />
         <activity android:name=".Highscore" />
         <activity android:name=".OrdFraDR" />
-        <activity android:name=".AlmindeligtSpil"></activity>
+        <activity android:name=".AlmindeligtSpil" />
+        <activity android:name=".vinderscreen" />
+        <activity android:name=".taberscreen"></activity>
     </application>
 
 </manifest>

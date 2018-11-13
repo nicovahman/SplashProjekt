@@ -34,6 +34,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="41dp"
-        android:text="Startsiden" />
+        android:background="@color/colorPrimary"
+        android:text="Startsiden"
+        android:textColor="@android:color/background_light" />
 
 </RelativeLayout>
