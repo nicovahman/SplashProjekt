@@ -9,12 +9,12 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
-        android:layout_width="273dp"
-        android:layout_height="338dp"
+        android:layout_width="274dp"
+        android:layout_height="256dp"
         android:layout_alignTop="@+id/emneTilmailen"
         android:layout_alignEnd="@+id/textView4"
-        android:layout_marginTop="-93dp"
-        android:layout_marginEnd="-5dp"
+        android:layout_marginTop="-45dp"
+        android:layout_marginEnd="-6dp"
         android:src="@drawable/hangmangif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.618"
@@ -30,7 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="97dp"
         android:layout_marginEnd="-4dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="65dp"
         android:layout_toStartOf="@+id/anbefal"
         android:entries="@array/muligheder"></Spinner>
 
@@ -67,11 +67,11 @@
     <Button
         android:id="@+id/anbefal"
         android:layout_width="wrap_content"
-        android:layout_height="54dp"
-        android:layout_below="@+id/gifImageView"
+        android:layout_height="28dp"
         android:layout_alignEnd="@+id/textView"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="-146dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-143dp"
+        android:layout_marginBottom="15dp"
         android:background="@color/colorPrimary"
         android:text="Anbefal "
         android:textColor="@android:color/background_light" />
@@ -120,8 +120,8 @@
         android:layout_height="32dp"
         android:layout_alignTop="@+id/spin"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="-4dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="61dp"
         android:background="@color/colorPrimary"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/next" />
@@ -141,12 +141,45 @@
     <Button
         android:id="@+id/highscorepage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="29dp"
         android:layout_alignBottom="@+id/anbefal"
         android:layout_marginEnd="-69dp"
         android:layout_toStartOf="@+id/emailadresse"
         android:background="@color/colorPrimary"
         android:text="Highscore"
         android:textColor="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/ditNavn"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-30dp"
+        android:layout_marginBottom="195dp"
+        android:layout_toStartOf="@+id/anbefal"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/indtastNavn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-42dp"
+        android:layout_marginBottom="204dp"
+        android:layout_toStartOf="@+id/textView4"
+        android:text="Indtast navn:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/guessGame"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="314dp"
+        android:text="Ny" />
 
 </RelativeLayout>

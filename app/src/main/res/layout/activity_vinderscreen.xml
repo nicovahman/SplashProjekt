@@ -7,6 +7,16 @@
     tools:context=".vinderscreen">
 
     <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="42dp"
+        android:textSize="24sp" />
+
+    <TextView
         android:id="@+id/VinderInfo"
         android:layout_width="304dp"
         android:layout_height="170dp"
@@ -37,4 +47,7 @@
         android:background="@color/colorPrimary"
         android:text="Forside"
         android:textColor="@android:color/background_light" />
+
+
+
 </RelativeLayout>

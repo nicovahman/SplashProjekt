@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hangman - 2018</string>
+    <string name="app_name">s164404 nikva Nicolas Hangman Game</string>
     <string name="spil">Spil</string>
 
     <string-array name="muligheder">

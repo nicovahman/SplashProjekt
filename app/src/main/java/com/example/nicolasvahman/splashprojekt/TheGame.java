@@ -1,7 +1,5 @@
 package com.example.nicolasvahman.splashprojekt;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -27,13 +25,17 @@ public class TheGame extends AppCompatActivity {
 
     Galgelogik logik = new Galgelogik();
 
+    HomeActivity home1 = new HomeActivity();
+
 
     private TextView bbogstaver;
+    private TextView velkomstinfo;
 
     private TextView info;
     private EditText gættefelt;
     private TextView forkert;
     private ImageView billeder;
+    public String navnpaaspiller;
 
     private Button guess;
 
@@ -74,8 +76,17 @@ public class TheGame extends AppCompatActivity {
         info = (TextView) findViewById(R.id.infotekst);
         info.setText("Du skal gætte ordet: " + logik.getSynligtOrd());
         gættefelt.setHint("Skriv et bogstav her");
+        velkomstinfo = (TextView) findViewById(R.id.velkomst);
 
         forkert = (TextView) findViewById(R.id.forkertebogstaver);
+
+        Bundle extras = getIntent().getExtras();
+
+        if(extras !=null){
+            String fåSpillernavn = extras.getString("spillernavn");
+            velkomstinfo.setText(fåSpillernavn);
+
+        }
 
 
 
@@ -181,6 +192,8 @@ public class TheGame extends AppCompatActivity {
 
                 vinderScreen();
 
+
+
             }
             if (logik.erSpilletTabt()) {
 
@@ -193,42 +206,7 @@ public class TheGame extends AppCompatActivity {
     }
 
 
-    /*private AlertDialog.Builder tabtSpilDialog() {
-        final AlertDialog.Builder dlgAlertTaber = new AlertDialog.Builder(this);
-        dlgAlertTaber.setMessage("Du har brugt følgende antal forsøg: " + logik.getAntalForkerteBogstaver() + "Du skulle have gættet ordet: " + logik.getOrdet());
-        dlgAlertTaber.setTitle("Du tabte");
-        ((AlertDialog.Builder) dlgAlertTaber).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                opdaterSkærm();
-            }
-        });
-
-        dlgAlertTaber.create();
-
-        logik.nulstil();
-        return dlgAlertTaber;
-
-    }*/
-
-    /*private AlertDialog.Builder vundetSpilDialog() {
-        final AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
-        dlgAlert.setMessage("Du har brugt følgende antal forsøg: " + logik.getAntalForkerteBogstaver());
-        dlgAlert.setTitle("Vundet spil");
-        ((AlertDialog.Builder) dlgAlert).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                opdaterSkærm();
-            }
-        });
-
-        dlgAlert.create();
-
-        logik.nulstil();
-        return dlgAlert;
-
-    }*/
 
 
     public void tilbagetilForsiden() {
@@ -291,6 +269,13 @@ public class TheGame extends AppCompatActivity {
     public void gemHighScore() {
         antalbogstaver = 6 - logik.getAntalForkerteBogstaver();
 
+
+
+
+
+
+
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         scoreCounter = sharedPreferences.getInt("prefCount", 0);
 
@@ -304,21 +289,21 @@ public class TheGame extends AppCompatActivity {
         }
         */
 
-        Log.d("LOL", "Antal forkert: " + String.valueOf(antalbogstaver));
 
         editor = sharedPreferences.edit();
 
         editor.putInt("highScorePref" + scoreCounter, antalbogstaver);
         editor.apply();
 
+
         editor.putInt("prefCount", ++scoreCounter);
         editor.apply();
 
 
 
+        }
 
 
-    }
 
     public void vinderScreen(){
 

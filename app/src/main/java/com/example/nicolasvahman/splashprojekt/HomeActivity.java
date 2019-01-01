@@ -21,6 +21,8 @@ public class HomeActivity extends AppCompatActivity  {
     private ImageView næsteside;
     private Button next;
     private Button highscores;
+    private EditText spillerNavn;
+    private Button guessButton;
     String names[] = {"Ord fra DR", "Almindelige ord"};
     String record = "";
 
@@ -35,6 +37,17 @@ public class HomeActivity extends AppCompatActivity  {
         editTextto = findViewById(R.id.emailadresse);
         editTextEmne = findViewById(R.id.emneTilmailen);
         editTextMessage = findViewById(R.id.emailBesked);
+        spillerNavn = (EditText) findViewById(R.id.ditNavn);
+        guessButton = findViewById(R.id.guessGame);
+
+        guessButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent guessSpil = new Intent(HomeActivity.this, guessGame.class);
+                startActivity(guessSpil);
+            }
+        });
 
 
         næsteside = (ImageView) findViewById(R.id.nextpage);
@@ -70,6 +83,8 @@ public class HomeActivity extends AppCompatActivity  {
                             @Override
                             public void onClick(View v) {
                                 spilSpillet();
+                                spillerensNavn();
+
                             }
                         });
 
@@ -103,6 +118,8 @@ public class HomeActivity extends AppCompatActivity  {
 
 
     }
+
+
 
 
     public void spilSpillet(){
@@ -143,6 +160,18 @@ public class HomeActivity extends AppCompatActivity  {
         startActivity(highscoreside);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
+
+    public void spillerensNavn(){
+
+        String fåSpillernavn = "Velkommen til hangman " + spillerNavn.getText().toString();
+        Intent navnTilSpil = new Intent(HomeActivity.this, TheGame.class);
+
+        navnTilSpil.putExtra("spillernavn", fåSpillernavn);
+        startActivity(navnTilSpil);
+    }
+
+
+
 
 
 }
