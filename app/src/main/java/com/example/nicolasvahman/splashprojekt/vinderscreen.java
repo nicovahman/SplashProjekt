@@ -23,11 +23,13 @@ public class vinderscreen extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vinderscreen);
         getSupportActionBar().hide();
+
         navnet = findViewById(R.id.hello);
 
         final MediaPlayer mediaPlayer = MediaPlayer.create(vinderscreen.this, R.raw.klap);
@@ -86,6 +88,8 @@ public class vinderscreen extends AppCompatActivity {
         startActivity(highscore);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
+
+
 
 }
 
