@@ -78,20 +78,38 @@ public class guess2 extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.item1:
-                Intent startside = new Intent( guess2.this, HomeActivity.class);
-                startActivity(startside);
-
+                GoToStart();
+                return true;
             case R.id.item2:
-                Intent gættelegen = new Intent(guess2.this, guessGame.class);
-                startActivity(gættelegen);
+                GoToGættelegen();
+                return true;
             case R.id.item3:
-                Intent highscore = new Intent(guess2.this, Highscore.class);
-                startActivity(highscore);
+                GoToHighscoreClass();
+                return true;
             case R.id.item4:
-                Intent omspillet = new Intent(guess2.this, omSpillet.class);
-                startActivity(omspillet);
-
+                GoToOmSpillet();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void GoToStart(){
+        Intent start = new Intent(this, HomeActivity.class);
+        startActivity(start);
+    }
+
+    public void GoToGættelegen(){
+        Intent gættelegen = new Intent(this, guessGame.class);
+        startActivity(gættelegen);
+    }
+
+    public void GoToHighscoreClass(){
+        Intent hhscore = new Intent(this, Highscore.class);
+        startActivity(hhscore);
+    }
+    public void GoToOmSpillet(){
+        Intent omspillet = new Intent(this, omSpillet.class);
+        startActivity(omspillet);
+    }
+
 }

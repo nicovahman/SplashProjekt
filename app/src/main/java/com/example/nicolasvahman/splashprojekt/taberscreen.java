@@ -62,20 +62,37 @@ public class taberscreen extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.item1:
-                Intent startside = new Intent( taberscreen.this, HomeActivity.class);
-                startActivity(startside);
-
+                GoToStart();
+                return true;
             case R.id.item2:
-                Intent gættelegen = new Intent(taberscreen.this, guessGame.class);
-                startActivity(gættelegen);
+                GoToGættelegen();
+                return true;
             case R.id.item3:
-                Intent highscore = new Intent(taberscreen.this, Highscore.class);
-                startActivity(highscore);
+                GoToHighscoreClass();
+                return true;
             case R.id.item4:
-                Intent omspillet = new Intent(taberscreen.this, omSpillet.class);
-                startActivity(omspillet);
-
+                GoToOmSpillet();
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void GoToStart(){
+        Intent start = new Intent(this, HomeActivity.class);
+        startActivity(start);
+    }
+
+    public void GoToGættelegen(){
+        Intent gættelegen = new Intent(this, guessGame.class);
+        startActivity(gættelegen);
+    }
+
+    public void GoToHighscoreClass(){
+        Intent hhscore = new Intent(this, Highscore.class);
+        startActivity(hhscore);
+    }
+    public void GoToOmSpillet(){
+        Intent omspillet = new Intent(this, omSpillet.class);
+        startActivity(omspillet);
     }
 }
