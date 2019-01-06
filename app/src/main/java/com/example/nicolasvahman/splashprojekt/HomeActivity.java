@@ -3,6 +3,9 @@ package com.example.nicolasvahman.splashprojekt;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,7 +33,7 @@ public class HomeActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().hide();
+
 
 
         anbefaltilven = (Button) findViewById(R.id.anbefal);
@@ -171,7 +174,30 @@ public class HomeActivity extends AppCompatActivity  {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.example_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId()){
 
+            case R.id.item1:
+                Intent startside = new Intent( HomeActivity.this, HomeActivity.class);
+                startActivity(startside);
+
+            case R.id.item2:
+                Intent gættelegen = new Intent(HomeActivity.this, guessGame.class);
+                startActivity(gættelegen);
+            case R.id.item3:
+                Intent highscore = new Intent(HomeActivity.this, Highscore.class);
+                startActivity(highscore);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

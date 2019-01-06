@@ -43,4 +43,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="211dp"
         android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/taberfelt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="159dp"
+        android:textSize="24sp" />
 </RelativeLayout>
