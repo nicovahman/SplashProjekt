@@ -30,7 +30,7 @@ public class vinderscreen extends HomeActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vinderscreen);
-        getSupportActionBar().hide();
+
 
         navnet = findViewById(R.id.hello);
 

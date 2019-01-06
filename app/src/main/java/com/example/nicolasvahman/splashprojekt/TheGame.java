@@ -65,7 +65,7 @@ public class TheGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         final boolean spilletErTabt;
         setContentView(R.layout.activity_the_game);
-        getSupportActionBar().hide();
+
 
         guess = (Button) findViewById(R.id.guessbutton);
 

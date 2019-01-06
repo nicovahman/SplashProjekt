@@ -21,7 +21,7 @@ public class taberscreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taberscreen);
-        getSupportActionBar().hide();
+
 
         infoTilTaber = (TextView) findViewById(R.id.taberInfo);
         tilforsidetiltaberen = (Button) findViewById(R.id.tilforside);

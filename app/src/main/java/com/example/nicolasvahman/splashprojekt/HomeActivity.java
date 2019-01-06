@@ -147,7 +147,7 @@ public class HomeActivity extends AppCompatActivity  {
         intent4.putExtra(Intent.EXTRA_TEXT, besked);
 
         intent4.setType("message/rfc822");
-        startActivity(Intent.createChooser(intent4, "Vælg en email du vil benytte"));
+        startActivity(Intent.createChooser(intent4, "Skriv en mail til en ven, og fortæl om spillet. Vælg en email du vil benytte"));
 
     }
 
@@ -197,6 +197,9 @@ public class HomeActivity extends AppCompatActivity  {
                 return true;
             case R.id.item4:
                 GoToOmSpillet();
+                return true;
+            case R.id.item5:
+                anbefalSpilletTilenVen();
                 return true;
         }
         return super.onOptionsItemSelected(item);

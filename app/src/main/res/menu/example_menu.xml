@@ -19,4 +19,8 @@
         android:title="Om spillet"
         app:showAsAction="never" />
 
+    <item android:id="@+id/item5"
+        android:title="Anbefal spillet"
+        app:showAsAction="never" />
+
 </menu>
