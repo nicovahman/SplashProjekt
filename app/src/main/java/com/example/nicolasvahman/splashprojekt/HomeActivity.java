@@ -196,6 +196,9 @@ public class HomeActivity extends AppCompatActivity  {
             case R.id.item3:
                 Intent highscore = new Intent(HomeActivity.this, Highscore.class);
                 startActivity(highscore);
+            case R.id.item4:
+                Intent omspillet = new Intent(HomeActivity.this, omSpillet.class);
+                startActivity(omspillet);
 
         }
         return super.onOptionsItemSelected(item);

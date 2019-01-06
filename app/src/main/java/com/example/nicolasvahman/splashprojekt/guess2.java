@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,5 +63,35 @@ public class guess2 extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.example_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.item1:
+                Intent startside = new Intent( guess2.this, HomeActivity.class);
+                startActivity(startside);
+
+            case R.id.item2:
+                Intent gættelegen = new Intent(guess2.this, guessGame.class);
+                startActivity(gættelegen);
+            case R.id.item3:
+                Intent highscore = new Intent(guess2.this, Highscore.class);
+                startActivity(highscore);
+            case R.id.item4:
+                Intent omspillet = new Intent(guess2.this, omSpillet.class);
+                startActivity(omspillet);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

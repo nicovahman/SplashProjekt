@@ -15,4 +15,8 @@
         android:title="Highscoreliste"
         app:showAsAction="never" />
 
+    <item android:id="@+id/item4"
+        android:title="Om spillet"
+        app:showAsAction="never" />
+
 </menu>

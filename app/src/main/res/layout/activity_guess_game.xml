@@ -8,22 +8,40 @@
 
     <ListView
         android:id="@+id/listviewGame"
-        android:layout_width="wrap_content"
-        android:layout_height="409dp"
+        android:layout_width="338dp"
+        android:layout_height="274dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="102dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="125dp" />
 
     <TextView
         android:id="@+id/header"
-        android:layout_width="333dp"
-        android:layout_height="51dp"
+        android:layout_width="336dp"
+        android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="19dp"
-        android:text="Vælg et ord fra listen og gæt det"
+        android:text="Vælg et ord fra listen og gæt det. Eller tilføj et ord, og få en ven til at gætte det"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/resultat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/header"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/addbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/header"
+        android:layout_alignBottom="@+id/resultat"
+        android:text="TIlføj" />
 </RelativeLayout>

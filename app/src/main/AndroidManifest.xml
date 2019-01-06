@@ -25,8 +25,11 @@
         <activity android:name=".AlmindeligtSpil" />
         <activity android:name=".vinderscreen" />
         <activity android:name=".taberscreen" />
-        <activity android:name=".guessGame"/>
-        <activity android:name=".guess2" android:parentActivityName=".guessGame"/>
+        <activity android:name=".guessGame" />
+        <activity
+            android:name=".guess2"
+            android:parentActivityName=".guessGame" />
+        <activity android:name=".omSpillet"></activity>
     </application>
 
 </manifest>
