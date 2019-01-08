@@ -1,6 +1,7 @@
 package com.example.nicolasvahman.splashprojekt;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,19 +11,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
-
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
 
 public class vinderscreen extends HomeActivity{
 
     private TextView infoTilvinder;
-    TheGame game = new TheGame();
+    HomeActivity home = new HomeActivity();
     private Button tilforside;
     private Button tilHighscore;
 
     private TextView navnet;
 
+
+    KonfettiView viewKonfetti;
 
 
 
@@ -31,18 +35,20 @@ public class vinderscreen extends HomeActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vinderscreen);
 
+        navnet = findViewById(R.id.infoNavnjubi);
 
-        navnet = findViewById(R.id.hello);
+
+
+
+
+
+
 
         final MediaPlayer mediaPlayer = MediaPlayer.create(vinderscreen.this, R.raw.klap);
 
 
-
-        Bundle bb = getIntent().getExtras();
-        if (bb != null) {
-            String getSpillernavn = bb.getString("spillernavn");
-            navnet.setText(getSpillernavn);
-        }
+        viewKonfetti = findViewById(R.id.viewKonfetti);
+        makeGrafitti();
 
         tilforside = findViewById(R.id.tilForside);
         tilforside.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +92,7 @@ public class vinderscreen extends HomeActivity{
     }
 
     private void TilHighscore() {
-        Intent highscore = new Intent(vinderscreen.this, HomeActivity.class);
+        Intent highscore = new Intent(vinderscreen.this, Highscore.class);
         startActivity(highscore);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
@@ -139,6 +145,20 @@ public class vinderscreen extends HomeActivity{
         startActivity(omspillet);
     }
 
+
+    public void makeGrafitti(){
+
+        viewKonfetti.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(new Size(12, 5))
+                .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
+                .streamFor(300, 5000L);
+    }
 
 }
 

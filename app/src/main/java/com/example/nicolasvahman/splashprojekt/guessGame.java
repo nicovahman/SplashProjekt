@@ -18,7 +18,7 @@ public class guessGame extends HomeActivity {
 
     ListView listView;
     EditText input;
-    Intent myIntent;
+    Intent videreinfo;
     Button tilfoj;
     EditText indtast;
 
@@ -31,10 +31,10 @@ public class guessGame extends HomeActivity {
         tilfoj = findViewById(R.id.addbutton);
         indtast = findViewById(R.id.resultat);
 
-        myIntent = new Intent(guessGame.this, guess2.class);
+        videreinfo = new Intent(guessGame.this, guess2.class);
         listView = findViewById(R.id.listviewGame);
 
-        final String[] myData = {"Canada", "Danmark", "Frankrig","Holland", "England"};
+
 
         final ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Canada");
@@ -72,9 +72,9 @@ public class guessGame extends HomeActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            String item = (String) listView.getItemAtPosition(position).toString();
-            myIntent.putExtra("et", item);
-            startActivity(myIntent);
+            String detvalgte = (String) listView.getItemAtPosition(position).toString();
+            videreinfo.putExtra("ett", detvalgte);
+            startActivity(videreinfo);
 
         }
     };

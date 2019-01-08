@@ -1,6 +1,7 @@
 package com.example.nicolasvahman.splashprojekt;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +13,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
+
 public class guess2 extends AppCompatActivity {
 
     EditText gættelade;
     TextView vinderen;
     Button okknap;
     TextView taber;
+    vinderscreen vinder = new vinderscreen();
+    KonfettiView viewKonfetti1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +32,10 @@ public class guess2 extends AppCompatActivity {
         setContentView(R.layout.activity_guess2);
         final MediaPlayer mediaPlayer = MediaPlayer.create(guess2.this, R.raw.klap);
 
+        viewKonfetti1 = findViewById(R.id.viewKonfetti1);
+
         final Intent secondIntent = getIntent();
-        String besked = "Du har valgt følgende ord: " + secondIntent.getStringExtra("et");
+        String besked = "Du har valgt følgende ord: " + secondIntent.getStringExtra("ett");
 
         TextView infoM = findViewById(R.id.guessssss);
         infoM.setText(besked);
@@ -40,9 +49,11 @@ public class guess2 extends AppCompatActivity {
         okknap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(secondIntent.getStringExtra("et").equals(gættelade.getText().toString())) {
+                if(secondIntent.getStringExtra("ett").equals(gættelade.getText().toString())) {
                     vinderen.setText("Du har gættet rigtigt!");
+                    makeGrafitti1();
                     mediaPlayer.start();
+
 
                 }
 
@@ -110,6 +121,20 @@ public class guess2 extends AppCompatActivity {
     public void GoToOmSpillet(){
         Intent omspillet = new Intent(this, omSpillet.class);
         startActivity(omspillet);
+    }
+
+    public void makeGrafitti1(){
+
+        viewKonfetti1.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(new Size(12, 5))
+                .setPosition(-50f, viewKonfetti1.getWidth() + 50f, -50f, -50f)
+                .streamFor(300, 5000L);
     }
 
 }

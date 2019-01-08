@@ -26,6 +26,8 @@ public class HomeActivity extends AppCompatActivity  {
     private Button highscores;
     private EditText spillerNavn;
     private Button guessButton;
+    public Intent spillernavnet;
+
     String names[] = {"Ord fra DR", "Almindelige ord"};
     String record = "";
 
@@ -171,6 +173,17 @@ public class HomeActivity extends AppCompatActivity  {
 
         navnTilSpil.putExtra("spillernavn", fåSpillernavn);
         startActivity(navnTilSpil);
+    }
+
+    public void returnSpillernavnetTilVinder(){
+        String returTilVinder = "Tillykke med det!" + spillerNavn.getText().toString();
+
+        Intent tilVinder = new Intent(getApplicationContext(), vinderscreen.class);
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("vindernavnetoveralle", returTilVinder);
+        tilVinder.putExtras(tilVinder);
+
+        startActivity(tilVinder);
     }
 
 

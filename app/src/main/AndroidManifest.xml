@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.nicolasvahman.splashprojekt">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,7 +11,10 @@
         android:label="Hangman - 2018"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        tools:replace="android:label"
+
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +25,6 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".TheGame" />
         <activity android:name=".Highscore" />
-        <activity android:name=".OrdFraDR" />
         <activity android:name=".AlmindeligtSpil" />
         <activity android:name=".vinderscreen" />
         <activity android:name=".taberscreen" />

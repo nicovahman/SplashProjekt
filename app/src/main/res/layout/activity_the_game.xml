@@ -55,14 +55,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="208dp" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="53dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/restartknap"
-        android:layout_alignParentEnd="true"
-        app:srcCompat="@drawable/next" />
-
     <TextView
         android:id="@+id/score"
         android:layout_width="wrap_content"

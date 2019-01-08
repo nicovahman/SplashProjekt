@@ -25,6 +25,8 @@ public class Highscore extends AppCompatActivity {
     private int scoreCounter;
     private int score;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
