@@ -53,6 +53,7 @@ public class guess2 extends AppCompatActivity {
                     vinderen.setText("Du har gættet rigtigt!");
                     makeGrafitti1();
                     mediaPlayer.start();
+                    finish();
 
 
                 }
@@ -61,6 +62,7 @@ public class guess2 extends AppCompatActivity {
                     taber.setText("Du har gættet forkert, prøv igen");
                     taber.setText("");
                     gættelade.setText("");
+                    finish();
                 }
 
             }
@@ -107,20 +109,24 @@ public class guess2 extends AppCompatActivity {
     public void GoToStart(){
         Intent start = new Intent(this, HomeActivity.class);
         startActivity(start);
+        finish();
     }
 
     public void GoToGættelegen(){
         Intent gættelegen = new Intent(this, guessGame.class);
         startActivity(gættelegen);
+        finish();
     }
 
     public void GoToHighscoreClass(){
         Intent hhscore = new Intent(this, Highscore.class);
         startActivity(hhscore);
+        finish();
     }
     public void GoToOmSpillet(){
         Intent omspillet = new Intent(this, omSpillet.class);
         startActivity(omspillet);
+        finish();
     }
 
     public void makeGrafitti1(){

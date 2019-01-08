@@ -88,6 +88,7 @@ public class vinderscreen extends HomeActivity{
         Intent forside = new Intent(vinderscreen.this, HomeActivity.class);
         startActivity(forside);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        finish();
 
     }
 
@@ -95,6 +96,7 @@ public class vinderscreen extends HomeActivity{
         Intent highscore = new Intent(vinderscreen.this, Highscore.class);
         startActivity(highscore);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        finish();
     }
 
 
@@ -129,20 +131,24 @@ public class vinderscreen extends HomeActivity{
     public void GoToStart(){
         Intent start = new Intent(this, HomeActivity.class);
         startActivity(start);
+        finish();
     }
 
     public void GoToGættelegen(){
         Intent gættelegen = new Intent(this, guessGame.class);
         startActivity(gættelegen);
+        finish();
     }
 
     public void GoToHighscoreClass(){
         Intent hhscore = new Intent(this, Highscore.class);
         startActivity(hhscore);
+        finish();
     }
     public void GoToOmSpillet(){
         Intent omspillet = new Intent(this, omSpillet.class);
         startActivity(omspillet);
+        finish();
     }
 
 

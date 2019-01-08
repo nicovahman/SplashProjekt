@@ -47,6 +47,7 @@ public class taberscreen extends AppCompatActivity {
         Intent back = new Intent(taberscreen.this, HomeActivity.class);
         startActivity(back);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        finish();
     }
 
     @Override
@@ -80,19 +81,23 @@ public class taberscreen extends AppCompatActivity {
     public void GoToStart(){
         Intent start = new Intent(this, HomeActivity.class);
         startActivity(start);
+        finish();
     }
 
     public void GoToGættelegen(){
         Intent gættelegen = new Intent(this, guessGame.class);
         startActivity(gættelegen);
+        finish();
     }
 
     public void GoToHighscoreClass(){
         Intent hhscore = new Intent(this, Highscore.class);
         startActivity(hhscore);
+        finish();
     }
     public void GoToOmSpillet(){
         Intent omspillet = new Intent(this, omSpillet.class);
         startActivity(omspillet);
+        finish();
     }
 }

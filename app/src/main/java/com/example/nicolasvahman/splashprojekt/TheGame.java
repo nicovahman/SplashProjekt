@@ -317,6 +317,7 @@ public class TheGame extends AppCompatActivity {
         gåTilVinderSkærm.putExtra("vinderKey",vinderInfo);
         startActivity(gåTilVinderSkærm);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        finish();
 
     }
 
@@ -330,6 +331,7 @@ public class TheGame extends AppCompatActivity {
         gåTilTaberSkærm.putExtra("key",taberInfo);
         startActivity(gåTilTaberSkærm);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        finish();
     }
 
     @Override
@@ -363,22 +365,25 @@ public class TheGame extends AppCompatActivity {
     public void GoToStart(){
         Intent start = new Intent(this, HomeActivity.class);
         startActivity(start);
+        finish();
     }
 
     public void GoToGættelegen(){
         Intent gættelegen = new Intent(this, guessGame.class);
         startActivity(gættelegen);
+        finish();
     }
 
     public void GoToHighscoreClass(){
         Intent hhscore = new Intent(this, Highscore.class);
         startActivity(hhscore);
+        finish();
     }
     public void GoToOmSpillet(){
         Intent omspillet = new Intent(this, omSpillet.class);
         startActivity(omspillet);
+        finish();
     }
-
 }
 
 

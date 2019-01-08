@@ -132,6 +132,7 @@ public class HomeActivity extends AppCompatActivity  {
         startspilletnu = new Intent(this, TheGame.class);
         startActivity(startspilletnu);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        finish();
     }
 
     public void anbefalSpilletTilenVen() {
@@ -150,6 +151,7 @@ public class HomeActivity extends AppCompatActivity  {
 
         intent4.setType("message/rfc822");
         startActivity(Intent.createChooser(intent4, "Skriv en mail til en ven, og fortæl om spillet. Vælg en email du vil benytte"));
+        finish();
 
     }
 
@@ -157,6 +159,7 @@ public class HomeActivity extends AppCompatActivity  {
        Intent ordFraDR = new Intent(this, AlmindeligtSpil.class);
        startActivity(ordFraDR);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        finish();
 
     }
 
@@ -164,6 +167,7 @@ public class HomeActivity extends AppCompatActivity  {
         Intent highscoreside = new Intent(this, Highscore.class);
         startActivity(highscoreside);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        finish();
     }
 
     public void spillerensNavn(){
@@ -173,6 +177,7 @@ public class HomeActivity extends AppCompatActivity  {
 
         navnTilSpil.putExtra("spillernavn", fåSpillernavn);
         startActivity(navnTilSpil);
+        finish();
     }
 
     public void returnSpillernavnetTilVinder(){
@@ -184,6 +189,7 @@ public class HomeActivity extends AppCompatActivity  {
         tilVinder.putExtras(tilVinder);
 
         startActivity(tilVinder);
+        finish();
     }
 
 
@@ -221,20 +227,24 @@ public class HomeActivity extends AppCompatActivity  {
     public void GoToStart(){
         Intent start = new Intent(this, HomeActivity.class);
         startActivity(start);
+        finish();
     }
 
     public void GoToGættelegen(){
         Intent gættelegen = new Intent(this, guessGame.class);
         startActivity(gættelegen);
+        finish();
     }
 
     public void GoToHighscoreClass(){
         Intent hhscore = new Intent(this, Highscore.class);
         startActivity(hhscore);
+        finish();
     }
     public void GoToOmSpillet(){
         Intent omspillet = new Intent(this, omSpillet.class);
         startActivity(omspillet);
+        finish();
     }
 
 

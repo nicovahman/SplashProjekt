@@ -74,7 +74,7 @@ public class Highscore extends AppCompatActivity {
         Intent tilbage = new Intent(this, HomeActivity.class);
         startActivity(tilbage);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-
+        finish();
     }
 
     @Override
@@ -108,20 +108,24 @@ public class Highscore extends AppCompatActivity {
     public void GoToStart(){
         Intent start = new Intent(this, HomeActivity.class);
         startActivity(start);
+        finish();
     }
 
     public void GoToGættelegen(){
         Intent gættelegen = new Intent(this, guessGame.class);
         startActivity(gættelegen);
+        finish();
     }
 
     public void GoToHighscoreClass(){
         Intent hhscore = new Intent(this, Highscore.class);
         startActivity(hhscore);
+        finish();
     }
     public void GoToOmSpillet(){
         Intent omspillet = new Intent(this, omSpillet.class);
         startActivity(omspillet);
+        finish();
     }
 
 }
