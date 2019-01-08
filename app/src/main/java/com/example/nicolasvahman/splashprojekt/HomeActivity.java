@@ -43,29 +43,15 @@ public class HomeActivity extends AppCompatActivity  {
         editTextEmne = findViewById(R.id.emneTilmailen);
         editTextMessage = findViewById(R.id.emailBesked);
         spillerNavn = (EditText) findViewById(R.id.ditNavn);
-        guessButton = findViewById(R.id.guessGame);
 
-        guessButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent guessSpil = new Intent(HomeActivity.this, guessGame.class);
-                startActivity(guessSpil);
-            }
-        });
 
 
         næsteside = (ImageView) findViewById(R.id.nextpage);
         ArrayAdapter <String> adapter;
 
-        highscores = (Button) findViewById(R.id.highscorepage);
 
-        highscores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GoToHighscore();
-            }
-        });
+
+
 
         Spinner spin = findViewById(R.id.spin);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
