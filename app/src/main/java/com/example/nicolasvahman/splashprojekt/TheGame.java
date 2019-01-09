@@ -58,6 +58,7 @@ public class TheGame extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     SharedPreferences.Editor editorHighscore;
+    String fåSpillernavn;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +87,8 @@ public class TheGame extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if(extras !=null){
-            String fåSpillernavn = extras.getString("spillernavn");
-            velkomstinfo.setText(fåSpillernavn);
+            fåSpillernavn = extras.getString("spillernavn");
+            velkomstinfo.setText("Velkommen til hangman " + fåSpillernavn);
 
         }
 
@@ -295,10 +296,8 @@ public class TheGame extends AppCompatActivity {
 
         editor = sharedPreferences.edit();
 
+        editor.putString("prefCountName", fåSpillernavn);
         editor.putInt("highScorePref" + scoreCounter, antalbogstaver);
-        editor.apply();
-
-
         editor.putInt("prefCount", ++scoreCounter);
         editor.apply();
 

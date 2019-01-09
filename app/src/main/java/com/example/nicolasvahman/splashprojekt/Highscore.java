@@ -50,22 +50,24 @@ public class Highscore extends AppCompatActivity {
     }
 
     public void læsHighscore(){
-        ArrayList<Integer> highsScoreArrayList = new ArrayList<Integer>();
+        ArrayList<String> highsScoreArrayList = new ArrayList<>();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         scoreCounter = sharedPreferences.getInt("prefCount", 0);
+        String spillernavn = sharedPreferences.getString("prefCountName", "Unknown");
 
         Log.d("LOL - HIGHSCORE", "Score Count: " + scoreCounter);
 
         for(int i = 0; i < scoreCounter; i++){
-            score =  sharedPreferences.getInt(String.valueOf("highScorePref" + i), 0);
+            score =  sharedPreferences.getInt(String.valueOf("highScorePref" + (scoreCounter-1)), 0);
             Log.d("LOL - HIGHSCORE", "Score: " + score);
-            highsScoreArrayList.add(score);
         }
+        highsScoreArrayList.add(score + " - " + spillernavn);
+
         Collections.sort(highsScoreArrayList);
         Collections.reverse(highsScoreArrayList);
 
-        ArrayAdapter<Integer> arrayAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, highsScoreArrayList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, highsScoreArrayList);
         listView.setAdapter(arrayAdapter);
     }
 

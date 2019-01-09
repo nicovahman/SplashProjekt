@@ -38,15 +38,15 @@ public class HomeActivity extends AppCompatActivity  {
 
 
 
-        anbefaltilven = (Button) findViewById(R.id.anbefal);
+        anbefaltilven =  findViewById(R.id.anbefal);
         editTextto = findViewById(R.id.emailadresse);
         editTextEmne = findViewById(R.id.emneTilmailen);
         editTextMessage = findViewById(R.id.emailBesked);
-        spillerNavn = (EditText) findViewById(R.id.ditNavn);
+        spillerNavn =  findViewById(R.id.ditNavn);
 
 
 
-        næsteside = (ImageView) findViewById(R.id.nextpage);
+        næsteside =  findViewById(R.id.nextpage);
         ArrayAdapter <String> adapter;
 
 
@@ -158,7 +158,7 @@ public class HomeActivity extends AppCompatActivity  {
 
     public void spillerensNavn(){
 
-        String fåSpillernavn = "Velkommen til hangman " + spillerNavn.getText().toString();
+        String fåSpillernavn = spillerNavn.getText().toString();
         Intent navnTilSpil = new Intent(HomeActivity.this, TheGame.class);
 
         navnTilSpil.putExtra("spillernavn", fåSpillernavn);
