@@ -69,19 +69,6 @@ public class Galgelogik2 {
 
 
         public Galgelogik2() {
-            muligeOrd.add("bil");
-            muligeOrd.add("computer");
-            muligeOrd.add("programmering");
-            muligeOrd.add("motorvej");
-            muligeOrd.add("busrute");
-            muligeOrd.add("gangsti");
-            muligeOrd.add("skovsnegl");
-            muligeOrd.add("solsort");
-            muligeOrd.add("seksten");
-            muligeOrd.add("sytten");
-            muligeOrd.add("atten");
-            nulstil();
-
         }
 
 
@@ -98,7 +85,7 @@ public class Galgelogik2 {
         }
 
 
-        private void opdaterSynligtOrd() {
+        public void opdaterSynligtOrd() {
             synligtOrd = "";
             spilletErVundet = true;
             for (int n = 0; n < ordet.length(); n++) {

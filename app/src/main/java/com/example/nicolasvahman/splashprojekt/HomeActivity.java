@@ -1,8 +1,8 @@
 package com.example.nicolasvahman.splashprojekt;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -75,6 +75,8 @@ public class HomeActivity extends AppCompatActivity  {
                             public void onClick(View v) {
                                 spilSpillet();
                                 spillerensNavn();
+
+
 
                             }
                         });
@@ -149,16 +151,12 @@ public class HomeActivity extends AppCompatActivity  {
 
     }
 
-    public void GoToHighscore(){
-        Intent highscoreside = new Intent(this, Highscore.class);
-        startActivity(highscoreside);
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-        finish();
-    }
+
 
     public void spillerensNavn(){
 
         String fåSpillernavn = spillerNavn.getText().toString();
+
         Intent navnTilSpil = new Intent(HomeActivity.this, TheGame.class);
 
         navnTilSpil.putExtra("spillernavn", fåSpillernavn);
@@ -166,17 +164,7 @@ public class HomeActivity extends AppCompatActivity  {
         finish();
     }
 
-    public void returnSpillernavnetTilVinder(){
-        String returTilVinder = "Tillykke med det!" + spillerNavn.getText().toString();
 
-        Intent tilVinder = new Intent(getApplicationContext(), vinderscreen.class);
-        Bundle bundle1 = new Bundle();
-        bundle1.putString("vindernavnetoveralle", returTilVinder);
-        tilVinder.putExtras(tilVinder);
-
-        startActivity(tilVinder);
-        finish();
-    }
 
 
     @Override

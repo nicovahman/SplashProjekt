@@ -21,10 +21,12 @@ public class guess2 extends AppCompatActivity {
 
     EditText gættelade;
     TextView vinderen;
-    Button okknap;
-    TextView taber;
+    Button okknap, toforside, togætteleg;
+    TextView taber, infoM;
     vinderscreen vinder = new vinderscreen();
     KonfettiView viewKonfetti1;
+    String synligtOrd = "";
+    String gemtOrd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,19 @@ public class guess2 extends AppCompatActivity {
 
         viewKonfetti1 = findViewById(R.id.viewKonfetti1);
 
-        final Intent secondIntent = getIntent();
-        String besked = "Du har valgt følgende ord: " + secondIntent.getStringExtra("ett");
 
-        TextView infoM = findViewById(R.id.guessssss);
-        infoM.setText(besked);
+        final Intent secondIntent = getIntent();
+
+        gemtOrd = secondIntent.getStringExtra("ett");
+        opdaterSynligtOrd();
+
+        toforside = findViewById(R.id.tilbagetilforsidenknap);
+        togætteleg = findViewById(R.id.tilbagetilgættelegen);
+
+        String besked = synligtOrd;
+
+        infoM = findViewById(R.id.guessssss);
+        infoM.setText("Du skal gætte ordet "+ besked);
 
         vinderen = findViewById(R.id.vundetET);
         gættelade = findViewById(R.id.guesfelt);
@@ -50,19 +60,37 @@ public class guess2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(secondIntent.getStringExtra("ett").equals(gættelade.getText().toString())) {
-                    vinderen.setText("Du har gættet rigtigt!");
+                    vinderen.setText("Sådan! Rigtigt. Ordet var " + gemtOrd );
                     makeGrafitti1();
+                    infoM.setText(gemtOrd);
+                    taber.setText("");
+                    okknap.setVisibility(View.INVISIBLE);
+                    gættelade.setVisibility(View.INVISIBLE);
+                    togætteleg.setVisibility(View.VISIBLE);
+                    togætteleg.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GoToStart();
+                        }
+                    });
+                    toforside.setVisibility(View.VISIBLE);
+                    toforside.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GoToGættelegen();
+                        }
+                    });
+
                     mediaPlayer.start();
-                    finish();
+
 
 
                 }
 
                 else{
                     taber.setText("Du har gættet forkert, prøv igen");
-                    taber.setText("");
                     gættelade.setText("");
-                    finish();
+
                 }
 
             }
@@ -140,7 +168,13 @@ public class guess2 extends AppCompatActivity {
                 .addShapes(Shape.RECT, Shape.CIRCLE)
                 .addSizes(new Size(12, 5))
                 .setPosition(-50f, viewKonfetti1.getWidth() + 50f, -50f, -50f)
-                .streamFor(300, 5000L);
+                .streamFor(1000, 5000L);
+    }
+
+    public void opdaterSynligtOrd() {
+        for (int n = 0; n < gemtOrd.length(); n++) {
+            synligtOrd = synligtOrd + "*";
+        }
     }
 
 }
